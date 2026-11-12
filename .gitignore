@@ -1,0 +1,7 @@
+# macOS folder settings
+.DS_Store
+
+# Papers and résumé stay out of the public repo until we decide which ones
+# the site links to.
+Website/
+*.pdf
