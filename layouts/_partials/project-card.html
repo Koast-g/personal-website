@@ -1,0 +1,59 @@
+{{- /*
+One project. Call with (dict "page" <the project's page> "featured" <bool>).
+A featured project whose front matter names a `visual` (a file in
+_partials/visuals/) gets a second column with that picture and its numbers.
+*/ -}}
+{{- $p := .page }}
+{{- $visual := and .featured $p.Params.visual }}
+<article class="project{{ if $visual }} project--featured{{ end }} reveal">
+  <div class="project__body">
+    <p class="project__meta">
+      {{- with $p.Params.kind }}<span>{{ . }}</span>{{ end }}
+      {{- with $p.Params.course }}<span>{{ . }}</span>{{ end }}
+      {{- with $p.Params.when }}<span>{{ . }}</span>{{ end }}
+    </p>
+    <h3 class="project__title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+    {{- with $p.Params.subtitle }}
+    <p class="project__subtitle">{{ . }}</p>
+    {{- end }}
+    {{- with $p.RawSummary }}
+    <p class="project__summary">{{ . | markdownify }}</p>
+    {{- end }}
+    {{- with $p.Params.role }}
+    <p class="project__role"><strong>My role:</strong> {{ . }}{{ with $p.Params.team }} · {{ . }}{{ end }}</p>
+    {{- end }}
+    {{- with $p.Params.highlights }}
+    <ul class="checklist">
+      {{- range . }}
+      <li>{{ . | markdownify }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+    {{- with $p.Params.stack }}
+    <ul class="chips" aria-label="Built with">
+      {{- range . }}
+      <li class="chip">{{ . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+    <div class="project__actions">
+      <a class="btn btn--line" href="{{ $p.RelPermalink }}">Read the full write-up {{ partial "icon.html" "arrow-right" }}</a>
+      {{- /* The project's own pages and sections, like UniCab's competencies. */}}
+      {{- range $p.Pages }}
+      <a class="link-arrow" href="{{ .RelPermalink }}">{{ .Title }} {{ partial "icon.html" "arrow-right" }}</a>
+      {{- end }}
+    </div>
+  </div>
+  {{- with $visual }}
+  <div class="project__visual on-dark">
+    {{ partial (printf "visuals/%s.html" .) $p }}
+    {{- with $p.Params.stats }}
+    <dl class="stats">
+      {{- range . }}
+      <div class="stats__item"><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>
+      {{- end }}
+    </dl>
+    {{- end }}
+  </div>
+  {{- end }}
+</article>

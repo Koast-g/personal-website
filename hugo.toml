@@ -1,0 +1,49 @@
+# Settings for Kostiantyn Tsymbal's personal website, built with Hugo.
+# Preview it: run `hugo server` in this folder and open the address it prints.
+
+baseURL = "https://koast-g.github.io/personal-website/"
+locale = "en-US"
+title = "Kostiantyn Tsymbal"
+
+# Only the kinds of pages this site uses: no tags, categories or RSS feeds.
+disableKinds = ["taxonomy", "term", "rss"]
+
+[params]
+  description = "Kostiantyn Tsymbal studies computer science and economics at Grinnell College, builds software, and researches coral reefs and the economics of climate change."
+  email = "tsymbalk@grinnell.edu"
+  github = "https://github.com/Koast-g"
+  github_user = "Koast-g"
+  # Paste your LinkedIn profile address here and Contact will show it:
+  # linkedin = "https://www.linkedin.com/in/your-name/"
+  # The résumé PDF, inside static/. Its button only shows when the file is there.
+  resume_pdf = "documents/kostiantyn-tsymbal-resume.pdf"
+
+# The menu at the top of every page, in the same order as the home page.
+# Each identifier is the id of a section on the home page, so "about" links
+# to the About section.
+[menus]
+  [[menus.main]]
+    identifier = "about"
+    name = "About"
+    weight = 10
+  [[menus.main]]
+    identifier = "experience"
+    name = "Experience"
+    weight = 20
+  [[menus.main]]
+    identifier = "research"
+    name = "Research"
+    weight = 30
+  [[menus.main]]
+    identifier = "projects"
+    name = "Projects"
+    weight = 40
+  [[menus.main]]
+    identifier = "contact"
+    name = "Contact"
+    weight = 50
+
+# Code blocks (the competency pages): colored with CSS classes in the site's
+# own palette (main.css) instead of Chroma's inline Monokai colors.
+[markup.highlight]
+  noClasses = false

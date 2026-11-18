@@ -1,7 +1,14 @@
 # macOS folder settings
 .DS_Store
 
-# Papers and résumé stay out of the public repo until we decide which ones
-# the site links to.
+# The original papers and résumé (Website/) stay private. The copies in
+# static/documents/ are the ones approved for the site: the three papers, the
+# competency write-ups, and a résumé without the home address and phone number.
 Website/
 *.pdf
+!static/documents/**/*.pdf
+
+# Hugo's build output and caches (GitHub builds the site itself when publishing).
+public/
+resources/_gen/
+.hugo_build.lock

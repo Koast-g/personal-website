@@ -1,0 +1,47 @@
+{{- /* Contact: the end of every page, and the deepest zone of the home page's dive. */ -}}
+<footer class="site-footer on-dark" id="contact" data-depth="6000" aria-labelledby="contact-title">
+  {{ partial "marine-life.html" "hadal" }}
+  <div class="container">
+    <div class="contact">
+      <div class="contact__intro reveal">
+        <p class="eyebrow">Hadal zone · 6,000 m and deeper</p>
+        <h2 class="section__title" id="contact-title">Contact Me</h2>
+      </div>
+      <ul class="contact-list reveal">
+        {{- with site.Params.email }}
+        <li>
+          <a class="contact-item" href="mailto:{{ . }}">
+            <span class="contact-item__icon">{{ partial "icon.html" "mail" }}</span>
+            <span><span class="contact-item__label">Email</span><span class="contact-item__value">{{ . }}</span></span>
+          </a>
+        </li>
+        {{- end }}
+        {{- with site.Params.github }}
+        <li>
+          <a class="contact-item" href="{{ . }}" rel="me">
+            <span class="contact-item__icon">{{ partial "icon.html" "github" }}</span>
+            <span><span class="contact-item__label">GitHub</span><span class="contact-item__value">{{ site.Params.github_user }}</span></span>
+          </a>
+        </li>
+        {{- end }}
+        {{- with site.Params.linkedin }}
+        <li>
+          <a class="contact-item" href="{{ . }}" rel="me">
+            <span class="contact-item__icon">{{ partial "icon.html" "linkedin" }}</span>
+            <span><span class="contact-item__label">LinkedIn</span><span class="contact-item__value">{{ site.Title }}</span></span>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+    {{- with site.Home.Params.closing_quote }}
+    <blockquote class="footer__quote reveal">
+      <p>“{{ . }}”</p>
+    </blockquote>
+    {{- end }}
+    <div class="footer__bottom">
+      <p>© {{ now.Year }} {{ site.Title }} · Built with <a href="https://gohugo.io/">Hugo</a></p>
+      <a class="footer__top" href="#top">Back to the surface {{ partial "icon.html" "arrow-up" }}</a>
+    </div>
+  </div>
+</footer>

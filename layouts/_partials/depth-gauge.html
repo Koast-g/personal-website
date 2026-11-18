@@ -1,0 +1,15 @@
+{{- /*
+The depth gauge on the right edge of the home page (wide screens only). As you
+scroll, main.js moves the marker and shows how deep you are and in which ocean
+zone. It's also a way to scroll: drag the marker or click the line, or focus
+the line and use the arrow keys (section by section), Home and End.
+*/ -}}
+<div class="gauge">
+  <div class="gauge__track" role="slider" tabindex="0" aria-label="Depth: scrolls the page" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="6000" aria-valuenow="0" aria-valuetext="0 m, Surface">
+    <span class="gauge__marker"></span>
+  </div>
+  <p class="gauge__readout" aria-hidden="true">
+    <span class="gauge__depth">0 m</span>
+    <span class="gauge__zone">Surface</span>
+  </p>
+</div>

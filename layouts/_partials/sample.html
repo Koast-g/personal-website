@@ -1,0 +1,35 @@
+{{- /*
+The box at the top of a competency page: which part of the project its sample
+is, with links into the repository pinned to one commit, so the line numbers
+stay right as the code changes. From the page's front matter:
+  sample:
+    name, repo, commit (full hash), pr (number)
+    files: path, from, to (line numbers) and what (one line)
+*/ -}}
+{{- with .Params.sample }}
+{{- $sample := . }}
+{{- $base := printf "https://github.com/%s" .repo }}
+<aside class="sample" aria-labelledby="sample-title">
+  <p class="sample__label" id="sample-title">The sample</p>
+  <p class="sample__name">{{ .name }}</p>
+  <ul class="sample__files">
+    {{- range .files }}
+    <li>
+      <a class="sample__file" href="{{ printf "%s/blob/%s/%s#L%d-L%d" $base $sample.commit .path .from .to }}" target="_blank" rel="noopener">
+        <code>{{ path.Base .path }}</code>, lines {{ .from }}–{{ .to }}{{ partial "icon.html" "external" }}
+      </a>
+      {{- with .what }}
+      <span class="sample__what">{{ . }}</span>
+      {{- end }}
+      <span class="sample__path">{{ path.Dir .path }}/</span>
+    </li>
+    {{- end }}
+  </ul>
+  <p class="sample__meta">
+    {{ .repo }}
+    {{- with .commit }} · commit <a href="{{ printf "%s/commit/%s" $base . }}" target="_blank" rel="noopener"><code>{{ substr . 0 7 }}</code></a>{{ end }}
+    {{- with .pr }} · <a href="{{ printf "%s/pull/%d" $base . }}" target="_blank" rel="noopener">pull request #{{ . }}</a>{{ end }}
+  </p>
+  <p class="sample__note">The repository is private, so the code itself is shown below.</p>
+</aside>
+{{- end }}

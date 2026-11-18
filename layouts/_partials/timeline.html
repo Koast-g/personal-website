@@ -1,0 +1,45 @@
+{{- /*
+A list of entries from data/experience.yaml, as a timeline. Each entry folds:
+its title, organization and dates always show, and clicking them opens the
+bullet points below. It's a <details> element, so it also opens from the
+keyboard, and without JavaScript. An entry with a `video` shows the video's
+thumbnail with a play button there too: a link to YouTube, which main.js
+turns into the player itself when it's clicked.
+*/ -}}
+<ol class="timeline">
+  {{- range . }}
+  <li class="timeline__item{{ if .current }} is-current{{ end }}">
+    <details class="timeline__entry">
+      <summary class="timeline__summary">
+        <h4 class="timeline__title">{{ .title }}{{ partial "icon.html" "chevron-down" }}</h4>
+        <span class="timeline__dates">{{ .dates }}</span>
+        {{- $where := slice }}
+        {{- with .org }}{{ $where = $where | append . }}{{ end }}
+        {{- with .place }}{{ $where = $where | append . }}{{ end }}
+        {{- with $where }}
+        <span class="timeline__org">{{ delimit . ", " }}</span>
+        {{- end }}
+      </summary>
+      <div class="timeline__body">
+        {{- with .points }}
+        <ul class="timeline__points">
+          {{- range . }}
+          <li>{{ . }}</li>
+          {{- end }}
+        </ul>
+        {{- end }}
+        {{- with .video }}
+        <a class="video" href="https://www.youtube.com/watch?v={{ .id }}" target="_blank" rel="noopener" data-video="{{ .id }}" data-title="{{ .title }}">
+          <img class="video__thumb" src="{{ .thumbnail | relURL }}" alt="" loading="lazy" width="1280" height="720">
+          <span class="video__play" aria-hidden="true">{{ partial "icon.html" "play" }}</span>
+          <span class="video__caption">
+            <span class="video__label">Video{{ with .by }} · {{ . }}{{ end }}</span>
+            {{ .title }}
+          </span>
+        </a>
+        {{- end }}
+      </div>
+    </details>
+  </li>
+  {{- end }}
+</ol>

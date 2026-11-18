@@ -1,0 +1,43 @@
+{{- /*
+A page of writing, such as a project or its competencies: a short hero with
+the way back (breadcrumbs), the title and the details, then the text.
+*/ -}}
+<article class="article">
+  <header class="page-hero on-dark">
+    {{ partial "stars.html" . }}
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      <p class="eyebrow">{{ default "Project" .Params.kind }}</p>
+      <h1 class="page-hero__title">{{ .Title }}</h1>
+      {{- with .Params.subtitle }}
+      <p class="page-hero__subtitle">{{ . }}</p>
+      {{- end }}
+      {{ partial "page-meta.html" . }}
+    </div>
+    {{ partial "waves.html" . }}
+  </header>
+  <div class="container article__body">
+    {{- /* A competency page's sample: where it is in the project. */}}
+    {{ partial "sample.html" . }}
+    {{- with .Content }}
+    {{- with $.Params.diagram }}
+    {{- /* A page with a diagram (front matter `diagram:`, a partial in _partials/visuals/) shows it beside the text. */}}
+    <div class="article__split">
+      <div class="prose">
+        {{ $.Content }}
+      </div>
+      <aside class="article__diagram">
+        {{ partial (printf "visuals/%s.html" .) $ }}
+      </aside>
+    </div>
+    {{- else }}
+    <div class="prose">
+      {{ . }}
+    </div>
+    {{- end }}
+    {{- end }}
+    {{- if .Params.levels }}
+    {{ partial "competencies.html" . }}
+    {{- end }}
+  </div>
+</article>

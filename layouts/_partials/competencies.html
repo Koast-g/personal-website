@@ -1,0 +1,62 @@
+{{- /*
+The lists on the Competencies page, from its front matter (`levels`). Each
+level (basic, advanced) is a row of areas, and each area a column of
+competency cards.
+
+A card links to its write-up: the competency's own page in this section
+(competencies/<competency>.md, for example medium-scale-abstraction.md), or
+else a PDF in static/documents/competencies/ named <level key>-<competency>.pdf
+(an item can also give its own `pdf` path). Until one exists the card says
+"Coming soon". An area with no competencies yet says "To be decided".
+*/ -}}
+{{- $icons := dict "development" "code" "verification" "shield" "design" "pencil" "engineering" "tool" }}
+<div class="competencies">
+  {{- range .Params.levels }}
+  {{- $level := . }}
+  {{- $count := 0 }}
+  {{- range .areas }}{{ with .items }}{{ $count = add $count (len .) }}{{ end }}{{ end }}
+  <section class="comp-level reveal" aria-labelledby="level-{{ .key }}">
+    <header class="comp-level__head">
+      <p class="eyebrow">{{ len .areas }} areas · {{ if $count }}{{ $count }} competencies{{ else }}to be decided{{ end }}</p>
+      <h2 class="comp-level__title" id="level-{{ .key }}">{{ .name }}</h2>
+    </header>
+    <div class="comp-areas">
+      {{- range .areas }}
+      <div class="comp-area">
+        <h3 class="comp-area__title">
+          {{- with index $icons (lower .name) }}<span class="comp-area__icon">{{ partial "icon.html" . }}</span>{{ end }}
+          {{ .name }}
+        </h3>
+        <ul class="comp-cards">
+          {{- range .items }}
+          {{- $pdf := or .pdf (printf "documents/competencies/%s-%s.pdf" $level.key (urlize .name)) }}
+          {{- $page := $.GetPage (urlize .name) }}
+          <li>
+            {{- if $page }}
+            <a class="comp-card comp-card--ready" href="{{ $page.RelPermalink }}">
+              <span class="comp-card__name">{{ $page.Title }}</span>
+              <span class="comp-card__status">Read the write-up{{ partial "icon.html" "arrow-right" }}</span>
+            </a>
+            {{- else if fileExists (path.Join "static" $pdf) }}
+            <a class="comp-card comp-card--ready" href="{{ $pdf | relURL }}" target="_blank" rel="noopener">
+              <span class="comp-card__name">{{ .name }}</span>
+              <span class="comp-card__status">Write-up (PDF){{ partial "icon.html" "external" }}</span>
+              <span class="visually-hidden">(opens in a new tab)</span>
+            </a>
+            {{- else }}
+            <div class="comp-card comp-card--soon">
+              <span class="comp-card__name">{{ .name }}</span>
+              <span class="comp-card__status">Coming soon</span>
+            </div>
+            {{- end }}
+          </li>
+          {{- else }}
+          <li class="comp-card comp-card--soon comp-card--tbd"><span class="comp-card__status">To be decided</span></li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>

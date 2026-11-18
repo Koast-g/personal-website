@@ -1,0 +1,20 @@
+{{- /* The details under a project's title: course, when, role, team and tools. */ -}}
+{{- $details := slice }}
+{{- with .Params.course }}{{ $details = $details | append . }}{{ end }}
+{{- with .Params.when }}{{ $details = $details | append . }}{{ end }}
+{{- with .Params.role }}{{ $details = $details | append (printf "My role: %s" .) }}{{ end }}
+{{- with .Params.team }}{{ $details = $details | append . }}{{ end }}
+{{- with $details }}
+<ul class="page-meta">
+  {{- range . }}
+  <li>{{ . }}</li>
+  {{- end }}
+</ul>
+{{- end }}
+{{- with .Params.stack }}
+<ul class="chips page-hero__chips" aria-label="Built with">
+  {{- range . }}
+  <li class="chip">{{ . }}</li>
+  {{- end }}
+</ul>
+{{- end }}

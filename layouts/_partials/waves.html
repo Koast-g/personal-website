@@ -1,0 +1,11 @@
+{{- /*
+Three layers of waves along the bottom of a hero. Each SVG is twice as wide
+as the screen and slides left by half its width, which lines up exactly with
+where it started, so the motion loops without a jump. The front layer has the
+color of the section below, so the waves become that section's top edge.
+*/ -}}
+<div class="waves" aria-hidden="true">
+  <svg class="wave wave--back" viewBox="0 0 2880 160" preserveAspectRatio="none" focusable="false"><path d="M0 70C240 30 480 30 720 70S1200 110 1440 70S1920 30 2160 70S2640 110 2880 70V160H0Z"/></svg>
+  <svg class="wave wave--mid" viewBox="0 0 2880 160" preserveAspectRatio="none" focusable="false"><path d="M0 92C120 74 240 74 360 92S600 110 720 92S960 74 1080 92S1320 110 1440 92S1680 74 1800 92S2040 110 2160 92S2400 74 2520 92S2760 110 2880 92V160H0Z"/></svg>
+  <svg class="wave wave--front" viewBox="0 0 2880 160" preserveAspectRatio="none" focusable="false"><path d="M0 116C240 132 480 132 720 116S1200 100 1440 116S1920 132 2160 116S2640 100 2880 116V160H0Z"/></svg>
+</div>
