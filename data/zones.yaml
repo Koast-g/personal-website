@@ -1,0 +1,25 @@
+# The ocean zones the home page dives through, from the surface down.
+# layouts/home.html hands them to the sections in page order, so the first
+# section is always in the sunlight zone and the last in the abyssal zone,
+# whatever order the sections are in. (Contact, the footer, is the hadal zone.)
+
+- name: "Sunlight zone"
+  range: "0–200 m"
+  depth: 0
+  class: "sunlight"
+
+- name: "Twilight zone"
+  range: "200–1,000 m"
+  depth: 200
+  class: "twilight"
+
+- name: "Midnight zone"
+  range: "1,000–4,000 m"
+  depth: 1000
+  class: "midnight"
+
+- name: "Abyssal zone"
+  range: "4,000–6,000 m"
+  depth: 4000
+  class: "abyssal"
+  dark: true

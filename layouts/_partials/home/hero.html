@@ -1,0 +1,24 @@
+{{- /* The surface at sunset: the first stars, a sun on the horizon that sets as you scroll (main.js), the sea with the sun's reflection, and waves rolling into the next section. */ -}}
+<section class="hero on-dark" id="hero" data-depth="0" aria-labelledby="hero-title">
+  {{ partial "stars.html" . }}
+  <div class="hero__sun" aria-hidden="true"></div>
+  <div class="hero__sea" aria-hidden="true">
+    <div class="hero__glitter"><span class="hero__glow"></span></div>
+  </div>
+  <div class="container hero__content">
+    {{- with .Params.hero.eyebrow }}
+    <p class="eyebrow">{{ . }}</p>
+    {{- end }}
+    <h1 class="hero__title" id="hero-title">{{ site.Title }}</h1>
+    {{- with .Params.hero.quote }}
+    <blockquote class="hero__quote">
+      <p>“{{ . }}”</p>
+    </blockquote>
+    {{- end }}
+    <div class="hero__actions">
+      <a class="btn btn--ghost" href="#projects"><span>See my projects</span>{{ partial "icon.html" "arrow-right" }}</a>
+      <a class="btn btn--ghost" href="#research"><span>Read my research</span>{{ partial "icon.html" "arrow-right" }}</a>
+    </div>
+  </div>
+  {{ partial "waves.html" . }}
+</section>

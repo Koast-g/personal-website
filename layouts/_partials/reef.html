@@ -1,0 +1,48 @@
+{{- /*
+The reef in the sunlight zone (0-200 m), where reef corals live: they need
+sunlight. Two low clusters in the bottom corners of the first home section,
+out at the edges of the page and below the text: on the left a staghorn coral,
+a brain coral and a sea fan; on the right a sea fan, pillar coral and another
+staghorn. main.css colors them a pale tint of the sea, hides them on phones
+and leaves room for them under the section's content.
+*/ -}}
+<div class="reef" aria-hidden="true">
+  <svg class="reef__left" viewBox="0 0 420 120" focusable="false">
+    <g fill="currentColor">
+      <path d="M0 120 V84 C50 74 120 78 190 94 S320 112 410 120 Z"/>
+      <path d="M144 98 C144 54 240 54 240 98 Z"/>
+    </g>
+    {{- /* The brain coral's meandering grooves, in the section's own color. */}}
+    <g class="reef__grooves" fill="none" stroke-width="2.2" stroke-linecap="round">
+      <path d="M154 90 q6 -8 12 -2 q6 6 12 -2 q6 -8 12 -2 q6 6 12 -2 q6 -8 12 -2 q6 6 12 -1
+               M160 79 q6 -7 11 -2 q6 5 11 -2 q6 -7 11 -2 q6 5 11 -2 q6 -7 11 -2 q4 4 8 0
+               M172 69 q5 -5 9 -1 q5 4 9 -1 q5 -5 9 -1 q5 4 9 -1"/>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="7" d="M70 92 C70 80 68 70 66 60 M68 74 C60 66 52 58 46 44 M70 82 C80 74 90 66 98 52"/>
+      <path stroke-width="6" d="M66 60 C62 52 60 46 60 36 M66 62 C72 54 76 48 78 38 M52 58 C46 56 42 54 36 52 M90 66 C96 64 100 62 106 62"/>
+      <path stroke="none" fill="currentColor" opacity="0.45" d="M300 104 L262 66 C268 48 284 40 300 40 C316 40 332 48 338 66 Z"/>
+      <path stroke-width="1.6" d="M268 62 Q300 46 332 62 M278 80 Q300 70 322 80"/>
+      <path stroke-width="2.6" d="M300 112 L300 96 M300 96 C290 86 280 76 268 62 M284 80 C278 78 274 76 268 74 M276 70 C275 64 275 58 276 50
+        M300 96 C300 80 300 66 300 46 M300 70 C296 64 292 60 288 54 M300 64 C304 58 308 54 312 50
+        M300 96 C310 86 320 76 332 62 M316 80 C322 78 326 76 332 74 M324 70 C325 64 325 58 324 50"/>
+    </g>
+  </svg>
+  <svg class="reef__right" viewBox="0 0 420 120" focusable="false">
+    <g fill="currentColor">
+      <path d="M420 120 V80 C370 72 300 76 230 92 S110 112 10 120 Z"/>
+      <rect x="250" y="66" width="12" height="34" rx="6"/>
+      <rect x="266" y="52" width="13" height="46" rx="6.5"/>
+      <rect x="283" y="60" width="12" height="38" rx="6"/>
+      <rect x="299" y="72" width="11" height="24" rx="5.5"/>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="7" d="M370 88 C370 76 372 66 374 56 M372 70 C380 62 388 54 394 40 M370 80 C360 72 350 64 342 50"/>
+      <path stroke-width="6" d="M374 56 C378 48 380 42 380 32 M374 58 C368 50 364 44 362 34 M388 54 C394 52 398 50 404 48 M350 64 C344 62 340 60 334 60"/>
+      <path stroke="none" fill="currentColor" opacity="0.45" d="M150 106 L122 76 C128 62 140 56 150 56 C160 56 172 62 178 76 Z"/>
+      <path stroke-width="1.6" d="M127 74 Q150 62 173 74"/>
+      <path stroke-width="2.4" d="M150 114 L150 100 M150 100 C142 92 134 84 126 72 M138 86 C134 84 130 82 126 82 M150 100 C150 88 150 76 150 62 M150 80 C146 74 144 70 140 66
+        M150 100 C158 92 166 84 174 72 M162 86 C166 84 170 82 174 82 M150 76 C154 72 156 68 160 64"/>
+    </g>
+  </svg>
+</div>

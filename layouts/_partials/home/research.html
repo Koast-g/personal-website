@@ -1,0 +1,15 @@
+{{- /*
+Research papers: every page in content/research/, newest first.
+Call with (dict "page" <the home page> "eyebrow" <the zone label> "zone" <the zone class>).
+*/ -}}
+<div class="container">
+  <header class="section__head reveal">
+    <p class="eyebrow">{{ .eyebrow }}</p>
+    <h2 class="section__title" id="research-title">Research papers</h2>
+  </header>
+  {{- with site.GetPage "/research" }}
+  {{ partial "paper-list.html" .Pages.ByDate.Reverse }}
+  {{- end }}
+  {{- /* Sea life in the band right of the papers, which are narrower than the page. */}}
+  <div class="band-art" aria-hidden="true">{{ partial "marine-life.html" (printf "%s-filler" .zone) }}</div>
+</div>

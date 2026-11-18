@@ -1,0 +1,28 @@
+{{- /*
+UniCab's picture (set with `visual: "route-map"` in its front matter): a ride
+card like the app's, and a map of the trip along I-80 from Grinnell to
+Des Moines with a dot driving the route. Decorative only.
+*/ -}}
+<div class="ride-mock" aria-hidden="true">
+  <span class="ride-mock__icon">{{ partial "icon.html" "car" }}</span>
+  <span class="ride-mock__text">
+    <span class="ride-mock__route">Grinnell → Des Moines</span>
+    <span class="ride-mock__meta">Saturday · 2 seats left</span>
+  </span>
+  <span class="ride-mock__badge">Offer</span>
+</div>
+<svg class="route-map" viewBox="0 0 400 240" aria-hidden="true" focusable="false">
+  <path class="route-map__road" d="M-300 176C-100 172 80 164 150 154S300 120 420 106S640 84 720 80"/>
+  <path class="route-map__route" id="map-route" d="M318 112C268 116 238 146 188 152S118 168 84 172"/>
+  <circle class="route-map__car" r="6">
+    <animateMotion dur="6s" repeatCount="indefinite"><mpath href="#map-route"/></animateMotion>
+  </circle>
+  <g class="route-map__pin route-map__pin--from" transform="translate(318 112)">
+    <circle r="9"/><circle class="route-map__pin-dot" r="3.5"/>
+  </g>
+  <g class="route-map__pin" transform="translate(84 172)">
+    <circle r="9"/><circle class="route-map__pin-dot" r="3.5"/>
+  </g>
+  <text class="route-map__label" x="318" y="90" text-anchor="middle">GRINNELL</text>
+  <text class="route-map__label" x="84" y="202" text-anchor="middle">DES MOINES</text>
+</svg>

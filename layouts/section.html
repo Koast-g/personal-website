@@ -1,0 +1,28 @@
+{{- /*
+A section. The top-level Projects section (/projects/) lists every project.
+A project with pages of its own, like UniCab with its competencies, is also a
+section, and shows its write-up like any other page.
+*/ -}}
+{{ define "main" }}
+{{- if .Parent.IsHome }}
+<div class="article">
+  <header class="page-hero on-dark">
+    {{ partial "stars.html" . }}
+    <div class="container">
+      {{ partial "breadcrumbs.html" . }}
+      <h1 class="page-hero__title">{{ .Title }}</h1>
+    </div>
+    {{ partial "waves.html" . }}
+  </header>
+  <section class="section section--projects zone--twilight" aria-label="{{ .Title }}">
+    <div class="container projects">
+      {{- range .Pages.ByWeight }}
+      {{ partial "project-card.html" (dict "page" . "featured" false) }}
+      {{- end }}
+    </div>
+  </section>
+</div>
+{{- else }}
+  {{ partial "article.html" . }}
+{{- end }}
+{{ end }}

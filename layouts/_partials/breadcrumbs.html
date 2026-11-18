@@ -1,0 +1,13 @@
+{{- /*
+The trail of pages above this one, for example  Home / Projects / UniCab.
+A top-level section (like Projects) links to its part of the home page.
+*/ -}}
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {{- range .Ancestors.Reverse }}
+    {{- $href := .RelPermalink }}
+    {{- if and (not .IsHome) .Parent.IsHome }}{{ $href = printf "%s#%s" site.Home.RelPermalink .Section }}{{ end }}
+    <li><a href="{{ $href }}">{{ if .IsHome }}Home{{ else }}{{ .Title }}{{ end }}</a></li>
+    {{- end }}
+  </ol>
+</nav>

@@ -1,0 +1,17 @@
+{{- /*
+Projects: every page in content/projects/, the first one featured.
+Call with (dict "page" <the home page> "eyebrow" <the zone label>).
+*/ -}}
+<div class="container">
+  <header class="section__head reveal">
+    <p class="eyebrow">{{ .eyebrow }}</p>
+    <h2 class="section__title" id="projects-title">Projects</h2>
+  </header>
+  <div class="projects">
+    {{- with site.GetPage "/projects" }}
+    {{- range $i, $p := .Pages.ByWeight }}
+    {{ partial "project-card.html" (dict "page" $p "featured" (eq $i 0)) }}
+    {{- end }}
+    {{- end }}
+  </div>
+</div>

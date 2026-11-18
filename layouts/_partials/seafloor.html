@@ -1,0 +1,56 @@
+{{- /*
+The seafloor along the bottom of the deepest home section (the abyssal zone,
+4,000-6,000 m). A wreck has settled into the sediment: its bow, with portholes
+and a snapped mast, its stern, with the bridge and a broken funnel, and a gap
+where the hull broke. On the rise beside it is deep-sea life that really lives
+this deep: a sea pen, glass sponges (Venus's flower baskets) and a stalked sea
+lily. (Reef corals need sunlight, so they're in the reef at the top instead.)
+Everything has the footer's color, so the footer looks like the ocean floor.
+*/ -}}
+<div class="seafloor" aria-hidden="true">
+  <svg viewBox="0 0 1440 180" preserveAspectRatio="xMidYMax slice" focusable="false">
+    {{- /* The wreck, filled, drawn 1.7 times its original size; its keel is under the sediment, which is drawn last. */}}
+    <g transform="translate(-356.6 -95.2) scale(1.7)">
+    <g fill="currentColor">
+      <path fill-rule="evenodd" d="M298 100 L476 124 L481 129 L474 134 L483 140 L478 156 L332 156 Z
+        M327 112a2.6 2.6 0 1 0 0.01 0Z M349 115a2.6 2.6 0 1 0 0.01 0Z M371 118a2.6 2.6 0 1 0 0.01 0Z M410 123.5a2.6 2.6 0 1 0 0.01 0Z M432 126.5a2.6 2.6 0 1 0 0.01 0Z"/>
+      <path d="M492 126 L646 134 Q662 136 658 146 L652 156 L491 156 L486 141 L494 136 L487 131 Z"/>
+      <path fill-rule="evenodd" d="M570 131 L571 104 L620 106.6 L620 133.5 Z M577 109h6v4.5h-6Z M589 109.6h6v4.5h-6Z M601 110.2h6v4.5h-6Z M611 110.7h5v4.5h-5Z"/>
+      <path d="M521 129 L528 90 L533 94 L538 88 L544 91 L541 130 Z"/>
+      <path d="M676 141 L700 137 L702 141 L679 145 Z"/>
+    </g>
+    {{- /* The bow's snapped mast and its dangling yard. */}}
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke-width="5" d="M386 112 L380 80 L394 62"/>
+      <path stroke-width="3" d="M381 84 L367 97"/>
+    </g>
+    </g>
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      {{- /* A sea pen: a feathered stalk. */}}
+      <g transform="translate(90 2)">
+      <path stroke-width="3" d="M772 132 C770 112 766 92 768 66"/>
+      <path stroke-width="2.4" d="M769 74l-6 -3.3M769 74l6 -3.3 M769 80l-9 -5M769 80l9 -5 M769 86l-11 -6.1M769 86l11 -6.1 M769 92l-12 -6.6M769 92l12 -6.6 M769 98l-11 -6.1M769 98l11 -6.1 M769 104l-9 -5M769 104l9 -5 M769 110l-6 -3.3M769 110l6 -3.3"/>
+      </g>
+      {{- /* Glass sponges: slender lattice tubes. */}}
+      <g transform="translate(100 2)">
+      <path stroke-width="2.6" d="M896 112 C893 92 889 72 885 52 M904 112 C905 92 902 72 899 52 M885 52 Q892 47 899 52 M885 52 Q892 56 899 52
+        M918 110 C920 88 926 64 930 42 M926 110 C930 88 936 64 940 44 M930 42 Q936 38 940 44 M930 42 Q935 47 940 44
+        M943 112 C944 100 945 88 946 76 M951 112 C952 100 954 88 956 77 M946 76 Q951 72 956 77 M946 76 Q951 80 956 77"/>
+      <path stroke-width="1.6" d="M891 80 Q896 82 902 80 M925 74 Q930 76 935 74 M945 92 Q949 94 953 92"/>
+      </g>
+      {{- /* A sea lily (stalked crinoid): a long stalk and a crown of curling arms. */}}
+      <g transform="translate(60 2)">
+      <path stroke-width="3" d="M1170 140 C1168 112 1164 86 1162 64"/>
+      <path stroke-width="2.4" d="M1167 118 l-6 -3 M1166 104 l6 -3 M1164 90 l-6 -3
+        M1162 64 C1150 58 1140 48 1138 36 q0 -6 5 -6
+        M1162 64 C1153 54 1148 42 1149 30 q1 -5 5 -4
+        M1162 64 C1158 50 1157 38 1159 26 q2 -4 5 -2
+        M1162 64 C1166 50 1167 38 1165 26 q-2 -4 -5 -2
+        M1162 64 C1171 54 1176 42 1175 30 q-1 -5 -5 -4
+        M1162 64 C1174 58 1184 48 1186 36 q0 -6 -5 -6"/>
+      </g>
+    </g>
+    {{- /* The sediment: a basin the wreck lies in, and a rise for the sponges. */}}
+    <path fill="currentColor" d="M0 150 C60 146 120 144 180 148 S420 152 560 150 S760 146 840 132 S960 108 1020 112 S1140 138 1220 140 S1360 126 1440 118 V180 H0 Z"/>
+  </svg>
+</div>

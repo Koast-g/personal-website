@@ -1,0 +1,9 @@
+{{- /* The photo in the About section, or initials until there is one (set `portrait` in content/_index.md). */ -}}
+<figure class="portrait">
+  {{- with .Params.portrait }}
+  <img src="{{ . | relURL }}" alt="Portrait of {{ site.Title }}">
+  {{- else }}
+  <span class="portrait__initials" aria-hidden="true">{{ range split site.Title " " }}{{ substr . 0 1 }}{{ end }}</span>
+  <figcaption class="portrait__note">Photo coming soon</figcaption>
+  {{- end }}
+</figure>

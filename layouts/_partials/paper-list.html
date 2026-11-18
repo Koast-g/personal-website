@@ -1,0 +1,39 @@
+{{- /*
+The research papers on the home page, in the order given: each title opens
+the paper's PDF, with the course and co-authors under it and the abstract
+below. A title only becomes a link when its PDF is in static/, so the site
+never links to a missing file.
+*/ -}}
+<ol class="papers">
+  {{- range . }}
+  {{- $pdf := "" }}
+  {{- with .Params.pdf }}{{ if fileExists (path.Join "static" .) }}{{ $pdf = . | relURL }}{{ end }}{{ end }}
+  <li class="paper reveal">
+    <h3 class="paper__title">
+      {{- if $pdf }}
+      <a class="paper__link" href="{{ $pdf }}" target="_blank" rel="noopener">
+        <span class="paper__name">{{ .Title }}{{ partial "icon.html" "external" }}</span>
+        {{- with .Params.subtitle }}
+        <span class="paper__subtitle">{{ . }}</span>
+        {{- end }}
+        <span class="visually-hidden">(PDF, opens in a new tab)</span>
+      </a>
+      {{- else }}
+      <span class="paper__name">{{ .Title }}</span>
+      {{- with .Params.subtitle }}
+      <span class="paper__subtitle">{{ . }}</span>
+      {{- end }}
+      {{- end }}
+    </h3>
+    {{- $byline := slice }}
+    {{- with .Params.course }}{{ $byline = $byline | append . }}{{ end }}
+    {{- with .Params.coauthors }}{{ $byline = $byline | append (printf "%s: %s" (cond (gt (len .) 1) "Co-authors" "Co-author") (delimit . ", " " and ")) }}{{ end }}
+    {{- with $byline }}
+    <p class="paper__byline">{{ delimit . ", " }}</p>
+    {{- end }}
+    <div class="paper__abstract">
+      {{ .Content }}
+    </div>
+  </li>
+  {{- end }}
+</ol>

@@ -1,0 +1,126 @@
+{{- /*
+Sea life for one ocean zone, in the left margin of its section, each animal
+where it really lives. Call with the zone's class:
+  sunlight  a sea turtle, swimming up toward the light
+  twilight  two jellyfish
+  midnight  an anglerfish, its lure glowing in the dark
+  hadal     a snailfish, the deepest fish ever filmed (the footer)
+(The abyssal zone has the wreck and the seafloor instead: seafloor.html.)
+main.css places and colors them, lets them drift slowly, and only shows them on
+screens wide enough to have an empty margin.
+
+"<zone>-filler" draws sea life for the empty space a section's own layout
+leaves (the section decides where; see experience.html and research.html):
+  twilight-filler  a school of lanternfish and a squid
+  midnight-filler  a sperm whale diving to hunt
+*/ -}}
+{{- if eq . "sunlight" }}
+<div class="creature creature--turtle" aria-hidden="true">
+  <svg viewBox="0 0 200 200" focusable="false">
+    <g transform="rotate(24 100 110)">
+      <g fill="currentColor">
+        <path d="M100 22 C110 22 114 32 113 42 C112 50 106 54 100 54 C94 54 88 50 87 42 C86 32 90 22 100 22 Z"/>
+        <path d="M64 80 C48 66 28 58 10 62 C14 70 28 82 44 92 C52 96 58 98 62 98 Z"/>
+        <path d="M136 80 C152 66 172 58 190 62 C186 70 172 82 156 92 C148 96 142 98 138 98 Z"/>
+        <path d="M70 140 C60 146 50 154 46 166 C56 166 66 160 76 152 Z"/>
+        <path d="M130 140 C140 146 150 154 154 166 C144 166 134 160 124 152 Z"/>
+        <path d="M96 160 L100 172 L104 160 Z"/>
+        <path d="M100 52 C126 52 142 76 142 104 C142 134 124 156 100 162 C76 156 58 134 58 104 C58 76 74 52 100 52 Z"/>
+      </g>
+      {{- /* The plates of its shell, in the section's own color. */}}
+      <path class="creature__lines" fill="none" stroke-width="2.4" stroke-linecap="round" d="M100 64 V150 M76 84 Q100 92 124 84 M70 108 Q100 116 130 108 M76 132 Q100 140 124 132"/>
+    </g>
+  </svg>
+</div>
+{{- else if eq . "twilight" }}
+{{- range slice "creature--jelly" "creature--jelly creature--jelly-small" }}
+<div class="creature {{ . }}" aria-hidden="true">
+  <svg viewBox="0 0 120 230" focusable="false">
+    <path fill="currentColor" d="M14 64 C14 24 106 24 106 64 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 q-5.75 7 -11.5 0 Z"/>
+    <g fill="none" stroke="currentColor" stroke-linecap="round">
+      <path stroke-width="5.5" d="M52 70 C44 96 62 118 52 144 C44 164 56 180 50 200 M68 70 C76 98 58 120 68 146 C76 166 64 184 70 206"/>
+      <path stroke-width="1.6" d="M20 66 C16 110 26 150 18 214 M34 68 C30 110 40 160 34 222 M86 68 C90 110 80 160 86 222 M100 66 C104 110 94 150 102 214"/>
+    </g>
+  </svg>
+</div>
+{{- end }}
+{{- else if eq . "midnight" }}
+<div class="creature creature--angler" aria-hidden="true">
+  <svg viewBox="0 0 240 150" focusable="false">
+    <defs>
+      <radialGradient id="angler-glow" class="creature__glow">
+        <stop offset="0" stop-opacity="0.55"/>
+        <stop offset="1" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <g fill="currentColor">
+      {{- /* Its body, with the mouth open and an eye cut out. */}}
+      <path fill-rule="evenodd" d="M44 70 C56 40 92 26 132 26 C172 26 200 44 210 67 L186 84 L214 97 C206 122 172 134 132 134 C96 134 62 124 48 104 L20 122 L28 88 L20 54 Z
+        M176 52 a4.5 4.5 0 1 0 0.01 0 Z"/>
+      {{- /* Its teeth, from both jaws into the mouth. */}}
+      <path d="M209.7 67.2 L212 76.5 L204.3 70.8 Z M203.7 71.2 L206 80.5 L198.3 74.8 Z M197.7 75.2 L200 84.5 L192.3 78.8 Z M191.7 79.2 L194 88.5 L186.3 82.8 Z
+        M186.6 85.2 L193 78.2 L192.4 87.8 Z M193.6 88.2 L200 81.2 L199.4 90.8 Z M200.6 91.2 L207 84.2 L206.4 93.8 Z M207.6 94.2 L214 87.2 L213.4 96.8 Z"/>
+      <path d="M112 104 C104 118 92 124 82 122 C90 114 100 106 112 104 Z"/>
+    </g>
+    <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M150 30 C154 10 196 4 222 26"/>
+    {{- /* The lure at the end of its rod, glowing. */}}
+    <g class="creature__lure">
+      <circle cx="223" cy="30" r="16" fill="url(#angler-glow)"/>
+      <circle cx="223" cy="30" r="4.5" fill="currentColor"/>
+    </g>
+  </svg>
+</div>
+{{- else if eq . "twilight-filler" }}
+<div class="filler filler--lanterns" aria-hidden="true">
+  <svg viewBox="0 0 260 200" focusable="false">
+    {{- /* Six lanternfish, each with its row of light organs. Each is drawn
+           out in full rather than reused by id, because this filler can be on
+           the page twice (Experience has one under each column). */}}
+    <g transform="rotate(-14 130 100)">
+      {{- range slice "translate(20 40) scale(1.3)" "translate(110 22) scale(1.1)" "translate(78 82) scale(1.2)" "translate(168 70) scale(1)" "translate(40 128) scale(1)" "translate(142 136) scale(1.15)" }}
+      <g transform="{{ . }}">
+        <path fill="currentColor" fill-rule="evenodd" d="M4 12 C8 4 20 2 34 4 C42 5 48 8 52 12 L60 5 L58 12 L60 19 L52 12 C48 16 42 19 34 20 C20 22 8 20 4 12 Z M13 10 a2.6 2.6 0 1 0 0.01 0 Z"/>
+        <path fill="currentColor" d="M25 4 L30 -2 L34 4 Z"/>
+        <g class="filler__dots"><circle cx="19" cy="16.5" r="1.1"/><circle cx="25" cy="17.5" r="1.1"/><circle cx="31" cy="17.5" r="1.1"/><circle cx="37" cy="16.8" r="1.1"/></g>
+      </g>
+      {{- end }}
+    </g>
+  </svg>
+</div>
+<div class="filler filler--squid" aria-hidden="true">
+  <svg viewBox="0 0 220 140" focusable="false">
+    <g transform="rotate(-28 110 70)">
+      <path fill="currentColor" d="M168 58 L198 38 L206 70 L198 102 L168 82 Z"/>
+      <path fill="currentColor" d="M204 70 C190 56 150 52 104 56 L90 60 L90 80 L104 84 C150 88 190 84 204 70 Z"/>
+      <path fill="currentColor" fill-rule="evenodd" d="M92 70 C92 62 86 58 80 58 C72 58 68 64 68 70 C68 76 72 82 80 82 C86 82 92 78 92 70 Z M82 66 a3 3 0 1 0 0.01 0 Z"/>
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <path stroke-width="3.2" d="M70 64 C54 58 40 56 26 52 M70 68 C54 66 38 66 22 64 M70 72 C54 74 38 76 22 78 M70 76 C54 82 40 86 26 90"/>
+        <path stroke-width="2" d="M70 66 C50 60 28 54 6 52 M70 74 C50 80 28 86 6 90"/>
+      </g>
+      <path fill="currentColor" d="M6 52 C0 50 -2 56 4 57 Z M6 90 C0 92 -2 86 4 85 Z"/>
+    </g>
+  </svg>
+</div>
+{{- else if eq . "midnight-filler" }}
+<div class="filler filler--whale" aria-hidden="true">
+  <svg viewBox="0 0 300 300" focusable="false">
+    <g transform="rotate(52 150 150) translate(0 100)">
+      <path fill="currentColor" fill-rule="evenodd" d="M296 34 C296 26 290 22 280 22 L200 22 C160 24 120 34 80 42 L36 48 L8 34 L18 50 L8 66 L36 54 C80 60 140 66 200 66 L222 64 L290 58 C296 54 298 44 296 34 Z
+        M232 44 a2.2 2.2 0 1 0 0.01 0 Z"/>
+      <path fill="currentColor" d="M206 66 C204 76 196 84 184 86 C190 78 198 70 206 66 Z M118 34 C124 28 132 26 140 30 Z"/>
+    </g>
+  </svg>
+</div>
+{{- else if eq . "hadal" }}
+<div class="creature creature--snailfish" aria-hidden="true">
+  <svg viewBox="0 0 220 80" focusable="false">
+    <g fill="currentColor">
+      {{- /* Its long soft fins along the back and the belly, fainter than the body. */}}
+      <path opacity="0.5" d="M30 40 C60 30 90 22 118 18 C100 26 70 34 30 42 Z M30 46 C60 50 90 54 118 60 C96 60 66 54 30 48 Z"/>
+      <path fill-rule="evenodd" d="M8 44 C40 38 80 28 120 22 C150 17 176 16 190 28 C202 38 200 52 188 60 C172 70 146 64 122 58 C84 50 44 48 8 44 Z
+        M182 34 a2.6 2.6 0 1 0 0.01 0 Z"/>
+      <path d="M156 58 C152 68 138 72 128 68 C136 64 146 60 156 58 Z"/>
+    </g>
+  </svg>
+</div>
+{{- end }}

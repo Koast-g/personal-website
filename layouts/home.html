@@ -1,0 +1,28 @@
+{{- /*
+The home page: one long page that dives from the surface (the hero) down
+through the ocean zones in data/zones.yaml, one section per zone. Contact is
+the footer, at the very bottom.
+
+To reorder the sections, reorder $sections. Each section takes the zone of
+its position (its colors, depth label and place on the depth gauge), so the
+water keeps getting deeper whatever the order. Each name is a partial in
+_partials/home/ and the section's id, which the menu in hugo.toml links to.
+*/ -}}
+{{ define "main" }}
+  {{ partial "home/hero.html" . }}
+  {{- $sections := slice "about" "experience" "research" "projects" }}
+  {{- range $i, $id := $sections }}
+  {{- $zone := index hugo.Data.zones $i }}
+  <section class="section section--{{ $id }} zone--{{ $zone.class }}{{ if $zone.dark }} on-dark{{ end }}" id="{{ $id }}" data-depth="{{ $zone.depth }}" aria-labelledby="{{ $id }}-title">
+    {{ partial (printf "home/%s.html" $id) (dict "page" $ "eyebrow" (printf "%s · %s" $zone.name $zone.range) "zone" $zone.class) }}
+    {{ partial "marine-life.html" $zone.class }}
+    {{- if eq $zone.class "sunlight" }}
+    {{ partial "reef.html" . }}
+    {{- end }}
+    {{- if $zone.dark }}
+    {{ partial "seafloor.html" . }}
+    {{- end }}
+  </section>
+  {{- end }}
+  {{ partial "depth-gauge.html" . }}
+{{ end }}

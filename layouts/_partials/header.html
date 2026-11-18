@@ -1,0 +1,22 @@
+{{- /* The bar at the top: name on the left, menu on the right (a button on phones). */ -}}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ site.Home.RelPermalink }}">
+      {{ partial "logo.html" . }}
+      <span>{{ site.Title }}</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        {{- range site.Menus.main }}
+        {{- /* Contact is the footer of every page, so it links within the page. */}}
+        {{- $href := cond (eq .Identifier "contact") "#contact" (printf "%s#%s" site.Home.RelPermalink .Identifier) }}
+        <li><a href="{{ $href }}" data-section="{{ .Identifier }}">{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>

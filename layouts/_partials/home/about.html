@@ -1,0 +1,24 @@
+{{- /*
+About: the text from content/_index.md, a photo and quick facts.
+Call with (dict "page" <the home page> "eyebrow" <the zone label>).
+*/ -}}
+{{- $page := .page }}
+<div class="container about">
+  <div class="about__main reveal">
+    <p class="eyebrow">{{ .eyebrow }}</p>
+    <h2 class="section__title" id="about-title">About</h2>
+    <div class="about__text">
+      {{ $page.Content }}
+    </div>
+  </div>
+  <aside class="about__aside reveal" aria-label="Quick facts">
+    {{ partial "portrait.html" $page }}
+    {{- with $page.Params.facts }}
+    <dl class="facts">
+      {{- range . }}
+      <div class="facts__row"><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>
+      {{- end }}
+    </dl>
+    {{- end }}
+  </aside>
+</div>

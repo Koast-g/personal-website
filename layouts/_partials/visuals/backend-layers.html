@@ -1,0 +1,47 @@
+{{- /*
+The diagram beside the Medium-scale architecture write-up (set with
+`diagram: "backend-layers"` in its front matter). It draws what the text says:
+the phone sends a request to the Supabase backend, whose API layer either
+calls a function in the logic layer or gets data straight from the tables in
+the data layer. The arrows are drawn; every label is real text.
+*/ -}}
+<figure class="layers">
+  <div class="layers__box layers__box--client">
+    <span class="layers__tag">Client</span>
+    <span class="layers__name">Student’s iPhone</span>
+    <span class="layers__what">The iOS app sends the request</span>
+  </div>
+
+  <div class="layers__link">
+    <svg class="layers__arrow" viewBox="0 0 12 44" aria-hidden="true" focusable="false"><path d="M6 3v38M1.5 7.5 6 3l4.5 4.5M1.5 36.5 6 41l4.5-4.5"/></svg>
+    <span>HTTPS request and response</span>
+  </div>
+
+  <div class="layers__server">
+    <span class="layers__tag">Server · Supabase backend</span>
+    <div class="layers__stack">
+      <div class="layers__box">
+        <span class="layers__name">API layer</span>
+        <span class="layers__what">PostgREST, the only door in</span>
+      </div>
+      <div class="layers__link">
+        <svg class="layers__arrow" viewBox="0 0 12 44" aria-hidden="true" focusable="false"><path d="M6 3v38M1.5 36.5 6 41l4.5-4.5"/></svg>
+        <span>calls functions</span>
+      </div>
+      <div class="layers__box">
+        <span class="layers__name">Logic layer</span>
+        <span class="layers__what">SQL and PL/pgSQL functions and triggers: the rules</span>
+      </div>
+      <div class="layers__link">
+        <svg class="layers__arrow" viewBox="0 0 12 44" aria-hidden="true" focusable="false"><path d="M6 3v38M1.5 36.5 6 41l4.5-4.5"/></svg>
+        <span>reads and writes</span>
+      </div>
+      <div class="layers__box">
+        <span class="layers__name">Data layer</span>
+        <span class="layers__what">PostgreSQL 17: tables and views</span>
+      </div>
+      {{- /* The other way down: the API layer getting data straight from the tables. */}}
+      <div class="layers__bypass"><span>gets data from tables</span></div>
+    </div>
+  </div>
+</figure>

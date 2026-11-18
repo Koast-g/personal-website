@@ -1,0 +1,147 @@
+# The Experience and Activities section on the home page. Edit this file and
+# the page updates itself. It can grow longer than the one-page résumé PDF.
+# Entries go newest first. `current: true` marks a role you still hold.
+
+education:
+  - school: "Grinnell College"
+    degree: "B.A. in Computer Science and Economics"
+    when: "Class of 2027"
+    gpa: "3.92"
+    # A PDF in static/. Its button only shows when the file is there.
+    transcript: "documents/kostiantyn-tsymbal-unofficial-transcript.pdf"
+
+experience:
+  - title: "New Student Orientation Ambassador"
+    org: "Student Affairs, Grinnell College"
+    dates: "August 2026 – present"
+    current: true
+    points:
+      - "Mentor a group of 14 incoming students through their transition to college, helping them navigate housing, course registration and social challenges."
+      - "Introduce new students to Grinnell’s academic, personal and essential student-life resources, helping them access the support and opportunities that are vital for their future success."
+  - title: "Marine Technician Intern"
+    org: "CWORI"
+    place: "U.S. Virgin Islands"
+    dates: "June – August 2026"
+    points:
+      - "Created 2D and 3D models of underwater reef structures in Agisoft Metashape to visualize reef morphology and collect quantitative data."
+      - "Annotated reef models to quantify coral coverage, mortality and survivorship, and analyzed the final datasets with regression models, difference-in-differences and ANOVA."
+      - "Conducted field-based coral restoration: collecting wild coral, fragmenting coral colonies and outplanting fragments onto reef sites."
+  - title: "Diver"
+    org: "CWORI Dive Center"
+    place: "U.S. Virgin Islands"
+    dates: "June 2026 – present"
+    current: true
+    points:
+      - "Rescue Diver certified: trained to assist distressed or unconscious divers underwater and to respond to diving emergencies."
+      - "Completed 67 dives over two months, about 75% of them to depths of around 20 meters."
+      - "Developed confidence and proficiency in underwater operations and field-based marine environments."
+  - title: "Dialogue Facilitator"
+    org: "Civic Education and Innovation, Grinnell College"
+    dates: "September 2024 – present"
+    current: true
+    points:
+      - "Co-facilitate dialogue events that bring hundreds of people from diverse groups on campus and in the community into conversations about political, social and economic issues."
+      - "Participate in weekly training to enhance facilitation techniques and support inclusive listening across different perspectives."
+      - "Developed a personal dialogue event titled “The Double-Edged Tech World: Understanding AI’s Impact on Our Future,” which explores machine learning research, policy and education implications, and broader societal applications of artificial intelligence."
+  - title: "Fitness Center Attendant"
+    org: "Athletic Department, Grinnell College"
+    dates: "September 2024 – present"
+    current: true
+    points:
+      - "Ensure the safety of students and campus guests by conducting routine equipment checks and monitoring the space for potential safety concerns."
+      - "Welcome and assist students and campus guests by providing gym orientations, explaining facility rules and teaching the proper, safe use of fitness equipment."
+  - title: "Gardener"
+    org: "Iowa Outdoor Products"
+    place: "Urbandale, IA"
+    dates: "June 2023 – August 2024"
+    points:
+      - "Assisted customers in selecting trees, shrubs, plants and other landscaping materials, sharing my personal recommendations to help them design and plan backyard landscapes and outdoor spaces."
+      - "Delivered plants, trees and landscaping materials directly to customers, helping ensure our projects were carried out smoothly and successfully."
+
+leadership:
+  - title: "Senator"
+    org: "Student Government Association, Grinnell College"
+    dates: "October 2026 – present"
+    current: true
+    points:
+      - "Represent the interests and perspectives of the Senior Class in the Student Government Association, advocating for student priorities in discussions with College administration."
+      - "Campaigned on improving campus environmental sustainability, advocating for clear campus recycling infrastructure, food waste reduction and collaboration with local farmers."
+  - title: "Pioneer Capital Investments"
+    org: "Grinnell College"
+    dates: "September 2023 – December 2025"
+    points:
+      - "Analyzed business models and financial market trends to support informed investment decisions."
+      - "Developed financial models and projections to assess risk and returns."
+  - title: "CFA Institute Research Challenge"
+    place: "Des Moines, IA"
+    dates: "October 2024 – February 2025"
+    points:
+      - "Conducted in-depth financial research and wrote a comprehensive equity research report on General Mills (GIS)."
+      - "Valued the company using DCF, Monte Carlo simulation and comparable company analysis."
+      - "Developed and defended the investment thesis in written and oral presentations to CFA judges."
+  - title: "Animal Care Volunteer"
+    org: "Poweshiek Animal League Shelter"
+    place: "Grinnell, IA"
+    dates: "September – December 2024"
+    points:
+      - "Provided care for dogs and cats by walking, bathing and feeding them, and giving them love."
+      - "Helped organize and coordinate fundraising events, including a food market stand, the on-campus club fair and other community gatherings."
+  - title: "Outreach Team Leader"
+    org: "Joppa"
+    place: "Des Moines, IA"
+    dates: "August 2021 – June 2024"
+    points:
+      - "Led a team of 3–5 volunteers delivering food, basic necessities and a sense of hope to people struggling with homelessness and hunger."
+      - "Collected feedback from outreach interactions to improve volunteer training and logistical efficiency."
+      - "Helped people get off the streets by connecting them with resources for housing, food and employment."
+    # A YouTube video shown under the entry: its id (from the link, after
+    # "youtu.be/"), title and channel, and a thumbnail kept in static/.
+    video:
+      id: "GuYc_-GMjao"
+      title: "Ukrainian Foreign Exchange Student Helps Homeless Americans During Russian Invasion"
+      by: "Joppa"
+      thumbnail: "images/joppa-video.jpg"
+  - title: "Fundraiser Organizer"
+    org: "Personal initiative"
+    place: "Des Moines, IA"
+    dates: "March 2022"
+    points:
+      - "Coordinated and led a fundraiser for Ukrainian children who lost their parents and homes and were forced to leave their country, raising over $10,000."
+      - "Promoted the fundraiser with Des Moines local news channels and high school clubs, on social media and at community gatherings."
+
+# Awards and honors, newest first: a row each, with a gold medal. To show a
+# photo under one, put it in static/images/awards/ and add to it
+#   image: "images/awards/<file name>"
+#   alt: "<what the photo shows>"
+awards:
+  - title: "Dean's List"
+    org: "Grinnell College"
+    year: "2023 – present"
+    description: "Recognition for a semester grade average of 3.75 or higher while completing at least 16 credit hours. Received for five semesters: Fall 2023, Spring 2024, Spring 2025, Fall 2025 and Spring 2026."
+  - title: "Community Service Leader"
+    org: "U.S. Department of State"
+    year: "2022 and 2023"
+    description: "For completing more than 100 hours of community service in the U.S. in one year, in both 2022 and 2023."
+  - title: "Hometown Hero"
+    org: "Modern Woodmen"
+    place: "West Des Moines, IA"
+    year: "2022"
+    description: "Recognition for my community service in Des Moines, especially my work with Joppa, a nonprofit homeless outreach organization."
+
+skills:
+  - group: "Programming languages"
+    items: ["C", "C++", "Java", "Python", "SQL"]
+  - group: "Software"
+    items: ["VS Code", "ArcGIS Pro", "Bloomberg", "GitHub", "RStudio", "Stata", "Agisoft Metashape", "Claude Code"]
+
+languages:
+  - name: "Ukrainian"
+    level: "Native"
+  - name: "English"
+    level: "Advanced"
+  - name: "Russian"
+    level: "Advanced"
+  - name: "German"
+    level: "Intermediate"
+  - name: "Polish"
+    level: "Intermediate"
